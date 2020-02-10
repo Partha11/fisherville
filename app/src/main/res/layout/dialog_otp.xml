@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/otp_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/enter_otp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="@dimen/_11sdp"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/otp_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_below="@id/otp_title"
+        android:hint="@string/code"
+        android:textSize="@dimen/_10sdp"
+        android:inputType="numberSigned"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/otp_submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otp_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="@string/submit"
+        android:textAllCaps="false"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/otp_resend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/otp_text"
+        android:layout_toStartOf="@id/otp_submit"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:text="@string/resend"
+        android:textAllCaps="false"
+        android:enabled="false"/>
+
+</RelativeLayout>

@@ -4,6 +4,7 @@
     package="com.techmave.fisherville">
 
     <application
+        android:name=".app.FisherApp"
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
@@ -12,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.techmave.fisherville.view.LoginActivity"></activity>
+        <activity android:name="com.techmave.fisherville.view.LoginActivity"
+            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
         <activity android:name="com.techmave.fisherville.view.DashboardActivity" />
         <activity
             android:name="com.techmave.fisherville.view.SplashActivity"
