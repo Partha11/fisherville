@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FisherVille</string>
+    <string name="initializing">Initializing</string>
 </resources>

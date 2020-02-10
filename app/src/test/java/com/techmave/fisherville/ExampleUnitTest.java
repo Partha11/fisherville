@@ -1,4 +1,4 @@
-package com.supernova.fisherville;
+package com.techmave.fisherville;
 
 import org.junit.Test;
 

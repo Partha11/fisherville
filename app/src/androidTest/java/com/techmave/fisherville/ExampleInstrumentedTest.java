@@ -1,4 +1,4 @@
-package com.supernova.fisherville;
+package com.techmave.fisherville;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.supernova.fisherville", appContext.getPackageName());
+        assertEquals("com.techmave.fisherville", appContext.getPackageName());
     }
 }
