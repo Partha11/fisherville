@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "720518735080",
+    "firebase_url": "https://fisherville-256ef.firebaseio.com",
+    "project_id": "fisherville-256ef",
+    "storage_bucket": "fisherville-256ef.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720518735080:android:66577b705056ee5bf2555d",
+        "android_client_info": {
+          "package_name": "com.techmave.fisherville"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "720518735080-3u9c9sv634ru60vjh11hpku30qcfpd9c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzxw74TlQhGWy4xEJ3jpgakMvSGK16gk8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "720518735080-3u9c9sv634ru60vjh11hpku30qcfpd9c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
