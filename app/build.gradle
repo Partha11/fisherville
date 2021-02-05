@@ -62,8 +62,7 @@ dependencies {
 
     //LifeCycle Components
 
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
 
     //Firebase Analytics, Cloud Messaging
@@ -76,7 +75,7 @@ dependencies {
     //UI Libraries
 
     implementation 'com.google.android.material:material:1.2.1'
-
+    implementation 'com.github.patgdut:RadioRealButton:v2.1.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
 
     implementation 'com.intuit.sdp:sdp-android:1.0.6'

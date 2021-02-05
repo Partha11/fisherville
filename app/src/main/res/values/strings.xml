@@ -6,7 +6,7 @@
     <string name="fisherman">Fisherman</string>
     <string name="seller">Seller</string>
     <string name="customer">Customer</string>
-    <string name="phone_number">Phone Number</string>
+    <string name="phone_number">Phone Number (Eg. 017xxxxxxxx)</string>
     <string name="resend_otp">Resend OTP</string>
     <string name="success">Success</string>
 

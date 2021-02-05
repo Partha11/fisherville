@@ -1,9 +1,16 @@
 package com.techmave.fisherville.view
 
+import android.animation.Animator
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
+import android.view.ViewTreeObserver
+import android.view.animation.AnimationUtils
+import android.view.animation.DecelerateInterpolator
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
@@ -18,6 +25,7 @@ import com.techmave.fisherville.util.Constants
 import com.techmave.fisherville.util.Utility
 import com.techmave.fisherville.viewmodel.LoginViewModel
 import java.util.concurrent.TimeUnit
+
 
 class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener {
 
@@ -57,9 +65,57 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener {
         dialog?.isCancelable = false
 
         binding.termsText.text = Utility.fromHtml(getString(R.string.terms_message))
-        binding.loginRadioGroup.check(R.id.radio_fisherman)
+        binding.radioFisherman.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans_r))
+        binding.radioSeller.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans_r))
+        binding.radioCustomer.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans_r))
+
+        binding.radioGroup.position = 0
 
         binding.loginButton.setOnClickListener(this)
+
+        val observer = binding.root.viewTreeObserver
+
+        if (observer.isAlive) {
+
+            observer.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+
+                override fun onGlobalLayout() {
+
+                    binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
+
+                    Handler(Looper.getMainLooper()).postDelayed({
+
+                        binding.loginLogo.animate()
+                                .translationY(-(binding.root.height - binding.loginLogo.height) / 3.5f)
+                                .setInterpolator(DecelerateInterpolator())
+                                .setDuration(800)
+                                .setListener(object : Animator.AnimatorListener {
+
+                                    override fun onAnimationStart(animation: Animator?) {
+                                        //Do Nothing
+                                    }
+
+                                    override fun onAnimationEnd(animation: Animator?) {
+
+                                        binding.container.visibility = View.VISIBLE
+
+                                        val fadeIn = AnimationUtils.loadAnimation(applicationContext, R.anim.fade_in)
+                                        binding.container.startAnimation(fadeIn)
+                                    }
+
+                                    override fun onAnimationCancel(animation: Animator?) {
+                                        //Do Nothing
+                                    }
+
+                                    override fun onAnimationRepeat(animation: Animator?) {
+                                        //Do Nothing
+                                    }
+                                })
+
+                    }, 800)
+                }
+            })
+        }
     }
 
     private fun authenticate(credential: PhoneAuthCredential) {
