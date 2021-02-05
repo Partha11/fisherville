@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.LoginActivity"
     android:background="#EBF9F9">
 
@@ -11,8 +12,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_fisherville"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_20sdp"/>
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/login_title"
@@ -24,7 +27,10 @@
         android:textColor="@android:color/holo_blue_dark"
         android:layout_below="@id/login_logo"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/_8sdp"/>
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintTop_toBottomOf="@id/login_logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <RadioGroup
         android:id="@+id/login_radio_group"
@@ -37,6 +43,9 @@
         android:paddingTop="@dimen/_5sdp"
         android:paddingBottom="@dimen/_5sdp"
         android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/login_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:weightSum="3">
 
         <RadioButton
@@ -74,48 +83,48 @@
 
     </RadioGroup>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/phone_number_layout"
-        android:layout_width="match_parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/login_phone_number"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        style="@style/LoginTextInputLayoutStyle"
-        android:textColorHint="@android:color/black"
-        android:layout_below="@id/login_radio_group">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/login_phone_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/phone_number"
-            android:inputType="phone"
-            android:textColor="@android:color/black"
-            android:textCursorDrawable="@drawable/edittext_cursor"
-            android:textSize="@dimen/_11sdp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:hint="@string/phone_number"
+        android:inputType="phone"
+        android:textColor="@android:color/black"
+        android:textCursorDrawable="@drawable/edittext_cursor"
+        android:textSize="@dimen/_11sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/login_radio_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/phone_number_layout"
+        android:layout_below="@id/login_phone_number"
         android:layout_centerHorizontal="true"
         android:text="@string/sign_in"
         android:textSize="@dimen/_11sdp"
         android:padding="@dimen/_10sdp"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/login_phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/terms_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         android:textSize="@dimen/_9sdp"
         android:textColor="@android:color/darker_gray"
         android:layout_marginBottom="@dimen/_6sdp"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

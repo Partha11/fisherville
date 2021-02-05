@@ -10,7 +10,7 @@
     <string name="resend_otp">Resend OTP</string>
     <string name="success">Success</string>
 
-    <string name="terms_message">By signing in, you agree to our &lt;font color="green"&gt;Terms of Service &lt;/font&gt; and &lt;font color="green"&gt;Privacy Policy &lt;/font&gt;</string>
+    <string name="terms_message">By signing in, you agree to our &lt;font color=\"green\"&gt;Terms of Service &lt;/font&gt; and &lt;font color=\"green\"&gt;Privacy Policy &lt;/font&gt;</string>
     <string name="code">Code</string>
     <string name="submit">Submit</string>
     <string name="resend">Resend OTP</string>

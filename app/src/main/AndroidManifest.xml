@@ -13,18 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.techmave.fisherville.view.LoginActivity"
-            android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge"/>
-        <activity android:name="com.techmave.fisherville.view.DashboardActivity" />
-        <activity
-            android:name="com.techmave.fisherville.view.SplashActivity"
+
+        <activity android:name=".view.SplashActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.LoginActivity"
+            android:theme="@style/Theme.Design.Light"/>
+        <activity android:name=".view.DashboardActivity"/>
+
     </application>
 
 </manifest>
