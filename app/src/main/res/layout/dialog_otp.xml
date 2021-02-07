@@ -1,49 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/_8sdp"
+    android:paddingBottom="@dimen/_2sdp"
+    android:paddingStart="@dimen/_8sdp"
+    android:paddingEnd="@dimen/_8sdp"
+    android:background="@drawable/dialog_bg">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/otp_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/enter_otp"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:textSize="@dimen/_11sdp"/>
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/otp_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_20sdp"
-        android:layout_below="@id/otp_title"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_6sdp"
+        android:gravity="center_vertical"
         android:hint="@string/code"
-        android:textSize="@dimen/_10sdp"
-        android:inputType="numberSigned"/>
+        android:textSize="@dimen/_10ssp"
+        android:inputType="numberSigned"
+        android:background="@drawable/card_outline_bg"
+        app:layout_constraintTop_toBottomOf="@id/otp_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/otp_submit"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/otp_text"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/submit"
-        android:textAllCaps="false"/>
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/prussian_blue"
+        android:textAllCaps="false"
+        android:fontFamily="@font/open_sans_r"
+        android:background="@drawable/ripple_button_bg_transparent"
+        app:layout_constraintEnd_toEndOf="@id/otp_text"
+        app:layout_constraintTop_toBottomOf="@id/otp_text"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/otp_resend"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/otp_text"
-        android:layout_toStartOf="@id/otp_submit"
-        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_height="@dimen/_30sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:text="@string/resend"
+        android:textSize="@dimen/_10ssp"
         android:textAllCaps="false"
-        android:enabled="false"/>
+        android:enabled="false"
+        android:background="@drawable/ripple_button_bg_transparent"
+        app:layout_constraintTop_toTopOf="@id/otp_submit"
+        app:layout_constraintBottom_toBottomOf="@id/otp_submit"
+        app:layout_constraintEnd_toStartOf="@id/otp_submit"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

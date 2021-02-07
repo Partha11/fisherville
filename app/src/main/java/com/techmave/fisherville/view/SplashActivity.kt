@@ -11,6 +11,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.ActivitySplashBinding
 import com.techmave.fisherville.util.Constants
+import com.techmave.fisherville.view.activity.DashboardActivity
+import com.techmave.fisherville.view.activity.LoginActivity
 
 class SplashActivity: AppCompatActivity() {
 

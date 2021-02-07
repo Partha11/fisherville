@@ -1,34 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.LoginActivity"
+    tools:context=".view.activity.LoginActivity"
     android:background="@color/light_cyan">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/login_logo"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/logo_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/login_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_fisherville"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="visible"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/login_logo_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="FISHERVILLE"
+            android:textSize="@dimen/_24ssp"
+            android:textStyle="bold"
+            android:fontFamily="@font/fenix_r"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/login_logo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:visibility="invisible"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_fisherville"
-        android:layout_gravity="center"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="visible"/>
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container"
+        android:id="@+id/body_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_8sdp"
-        android:layout_gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/guideline"
         android:visibility="gone">
 
         <co.ceryle.radiorealbutton.RadioRealButtonGroup
             android:id="@+id/radio_group"
-            android:layout_width="@dimen/_200sdp"
+            android:layout_width="@dimen/_160sdp"
             android:layout_height="wrap_content"
             app:rrbg_selectorAnimationType="translate_x"
             app:rrbg_selectorFullSize="false"
@@ -43,77 +72,157 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <co.ceryle.radiorealbutton.RadioRealButton
-                android:id="@+id/radio_fisherman"
+                android:id="@+id/radio_sign_in"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:rrb_ripple="true"
                 app:rrb_checked="true"
-                app:rrb_text="@string/fisherman"
+                app:rrb_text="Sign In"
                 app:rrb_textSize="@dimen/_10ssp"
                 app:rrb_textColorTo="@color/font_color"
                 app:rrb_textColor="@color/font_color"/>
 
             <co.ceryle.radiorealbutton.RadioRealButton
-                android:id="@+id/radio_seller"
+                android:id="@+id/radio_sign_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:rrb_ripple="true"
-                app:rrb_text="@string/seller"
-                app:rrb_textSize="@dimen/_10ssp"
-                app:rrb_textColorTo="@color/font_color"
-                app:rrb_textColor="@color/font_color"/>
-
-            <co.ceryle.radiorealbutton.RadioRealButton
-                android:id="@+id/radio_customer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:rrb_ripple="true"
-                app:rrb_text="@string/customer"
+                app:rrb_text="Sign Up"
                 app:rrb_textSize="@dimen/_10ssp"
                 app:rrb_textColorTo="@color/font_color"
                 app:rrb_textColor="@color/font_color"/>
 
         </co.ceryle.radiorealbutton.RadioRealButtonGroup>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/login_phone_number"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_30sdp"
-            android:hint="@string/phone_number"
-            android:inputType="phone"
-            android:maxLines="1"
-            android:maxLength="11"
-            android:textColor="@color/font_color"
-            android:textCursorDrawable="@drawable/edittext_cursor"
-            android:textSize="@dimen/_10ssp"
-            android:fontFamily="@font/open_sans_r"
-            android:drawableStart="@drawable/ic_smartphone"
-            android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginStart="@dimen/_10sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:paddingStart="@dimen/_6sdp"
-            android:paddingEnd="@dimen/_6sdp"
-            android:drawablePadding="@dimen/_4sdp"
-            android:background="@drawable/card_outline_bg"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sign_in_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/radio_group"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="visible">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_32sdp"
-            android:layout_below="@id/login_phone_number"
-            android:text="@string/sign_in"
-            android:textSize="@dimen/_10ssp"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/open_sans_r"
-            android:textAllCaps="false"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:background="@drawable/ripple_button_bg"
-            app:layout_constraintTop_toBottomOf="@id/login_phone_number"
-            app:layout_constraintEnd_toEndOf="@id/login_phone_number"/>
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/login_phone_number"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:maxLength="11"
+                android:textColor="@color/font_color"
+                android:textCursorDrawable="@drawable/edittext_cursor"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/open_sans_r"
+                android:drawableStart="@drawable/ic_smartphone"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:drawablePadding="@dimen/_4sdp"
+                android:background="@drawable/card_outline_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/login_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_below="@id/login_phone_number"
+                android:text="@string/sign_in"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/open_sans_r"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:background="@drawable/ripple_button_bg"
+                app:layout_constraintTop_toBottomOf="@id/login_phone_number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/login_phone_number"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/sign_up_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/radio_group"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/reg_user_name"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:hint="@string/user_name"
+                android:inputType="text"
+                android:maxLines="1"
+                android:maxLength="11"
+                android:textColor="@color/font_color"
+                android:textCursorDrawable="@drawable/edittext_cursor"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/open_sans_r"
+                android:drawableStart="@drawable/ic_name"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:drawablePadding="@dimen/_4sdp"
+                android:background="@drawable/card_outline_bg"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/reg_phone_number"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:hint="@string/phone_number"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:maxLength="11"
+                android:textColor="@color/font_color"
+                android:textCursorDrawable="@drawable/edittext_cursor"
+                android:textSize="@dimen/_10ssp"
+                android:fontFamily="@font/open_sans_r"
+                android:drawableStart="@drawable/ic_smartphone"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:drawablePadding="@dimen/_4sdp"
+                android:background="@drawable/card_outline_bg"
+                app:layout_constraintTop_toBottomOf="@id/reg_user_name"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sign_up_button"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:text="@string/sign_up"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/open_sans_r"
+                android:textAllCaps="false"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:background="@drawable/ripple_button_bg"
+                app:layout_constraintTop_toBottomOf="@id/reg_phone_number"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@id/reg_phone_number"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/terms_text"
@@ -131,4 +240,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
