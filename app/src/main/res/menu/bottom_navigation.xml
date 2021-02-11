@@ -9,8 +9,8 @@
         android:title="Market"
         android:icon="@drawable/ic_smartphone"/>
 
-    <item android:id="@+id/action_settings"
-        android:title="Settings"
+    <item android:id="@+id/action_profile"
+        android:title="Profile"
         android:icon="@drawable/ic_smartphone"/>
 
 </menu>

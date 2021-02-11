@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.activity.FishActivity">
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/_90sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:background="@drawable/dialog_bg"
+        android:elevation="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/fish_thumb"
+        android:layout_width="@dimen/_90sdp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        tools:src="@drawable/ic_smartphone"
+        android:scaleType="fitXY"
+        android:elevation="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintBottom_toBottomOf="@id/view"
+        app:layout_constraintStart_toStartOf="@id/view"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fish_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="Fish Name"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        android:elevation="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintTop_toTopOf="@id/fish_thumb"
+        app:layout_constraintStart_toEndOf="@id/fish_thumb"
+        app:layout_constraintEnd_toEndOf="@id/view"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/fish_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="This is some details about the fish"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        android:elevation="@dimen/_4sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintTop_toBottomOf="@id/fish_name"
+        app:layout_constraintStart_toStartOf="@id/fish_name"
+        app:layout_constraintEnd_toEndOf="@id/view"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fish_recycler"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:listitem="@layout/model_fish"
+        tools:itemCount="5"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

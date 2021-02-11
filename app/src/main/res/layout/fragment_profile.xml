@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragment.ProfileFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_170sdp"
+        app:srcCompat="@drawable/view_background_shape"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/daily_sell_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_15sdp"
+        tools:text="200 KG | 1200 BDT"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/open_sans_r"
+        android:textColor="@android:color/white"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/daily_sold_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/daily_sell_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:text="@string/sold_today"
+        android:textSize="@dimen/_11sdp"
+        android:fontFamily="@font/open_sans_r"
+        android:textColor="@android:color/white"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/active_badge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Active"
+        android:textSize="@dimen/_9ssp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/open_sans_r"
+        android:background="@drawable/dialog_bg"
+        android:backgroundTint="@color/honey_yellow"
+        android:gravity="center_vertical"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_6sdp"
+        android:paddingTop="@dimen/_3sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        app:layout_constraintTop_toTopOf="@id/daily_sell_text"
+        app:layout_constraintBottom_toBottomOf="@id/daily_sell_text"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/daily_buy_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/daily_sold_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        tools:text="220 KG | 1300 BDT"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="@font/open_sans_r"
+        android:textColor="@android:color/white"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/daily_bought_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/daily_buy_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:text="@string/bought_today"
+        android:textSize="@dimen/_11sdp"
+        android:fontFamily="@font/open_sans_r"
+        android:textColor="@android:color/white"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_v_68"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.60"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/daily_profit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/daily_buy_text"
+        app:layout_constraintBottom_toBottomOf="@id/daily_buy_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_4sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        tools:text="Profit: 450 BDT"
+        android:textSize="@dimen/_11sdp"
+        android:fontFamily="@font/open_sans_r"
+        android:textColor="@android:color/white"/>
+
+    <View
+        android:id="@+id/curved_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/daily_bought_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/card_login_bg"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/transaction_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/today_transactions"
+        app:layout_constraintTop_toTopOf="@id/curved_view"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="@font/open_sans_r"
+        android:textStyle="bold"
+        android:textColor="@color/salmon"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/transactions_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/transaction_title"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        tools:listitem="@layout/model_transaction"
+        tools:itemCount="4"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/no_transaction_found_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:text="@string/transaction_list_empty_message"
+        android:textSize="@dimen/_11ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        android:visibility="gone"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/transaction_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_plus"
+        android:contentDescription="@string/app_name"
+        android:backgroundTint="@color/salmon"
+        app:borderWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

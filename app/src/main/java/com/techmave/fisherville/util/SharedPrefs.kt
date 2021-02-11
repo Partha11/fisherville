@@ -56,7 +56,7 @@ class SharedPrefs(context: Context?) {
             editor?.apply()
         }
 
-    var weatherFetchTimeMillis: Long
+    var lastWeatherFetched: Long
 
         get() = prefs?.getLong(Constants.PREF_LAST_WEATHER_FETCHED, 0) ?: 0
 
@@ -67,4 +67,45 @@ class SharedPrefs(context: Context?) {
             editor?.putLong(Constants.PREF_LAST_WEATHER_FETCHED, time)
             editor?.apply()
         }
+
+    var lat: Float
+
+        get() = prefs?.getFloat(Constants.PREF_LOCATION_LAT, 0f) ?: 0f
+
+        set(lat) {
+
+            editor = prefs?.edit()
+
+            editor?.putFloat(Constants.PREF_LOCATION_LAT, lat)
+            editor?.apply()
+        }
+
+    var lon: Float
+
+        get() = prefs?.getFloat(Constants.PREF_LOCATION_LON, 0f) ?: 0f
+
+        set(lon) {
+
+            editor = prefs?.edit()
+
+            editor?.putFloat(Constants.PREF_LOCATION_LON, lon)
+            editor?.apply()
+        }
+
+    var weatherData: String
+
+        get() = prefs?.getString(Constants.PREF_WEATHER_DATA, "") ?: ""
+
+        set(data) {
+
+            editor = prefs?.edit()
+
+            editor?.putString(Constants.PREF_WEATHER_DATA, data)
+            editor?.apply()
+        }
+
+    fun getPrefs(): SharedPreferences? {
+
+        return prefs
+    }
 }

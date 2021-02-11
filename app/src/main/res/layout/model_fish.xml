@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginTop="@dimen/_3sdp"
+    android:layout_marginBottom="@dimen/_3sdp"
+    android:layout_marginStart="@dimen/_6sdp"
+    android:layout_marginEnd="@dimen/_6sdp"
+    app:cardCornerRadius="@dimen/_4sdp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_6sdp"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/location_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Lalbagh"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/highest_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Highest Price: 300/Kg"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"
+            android:layout_marginTop="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/location_name"
+            app:layout_constraintStart_toStartOf="@id/location_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/lowest_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Lowest Price: 280/Kg"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintTop_toBottomOf="@id/highest_price"
+            app:layout_constraintStart_toStartOf="@id/location_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/available_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Available"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/open_sans_r"
+            android:background="@drawable/dialog_bg"
+            android:backgroundTint="#006D77"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/_6sdp"
+            android:paddingEnd="@dimen/_6sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            app:layout_constraintTop_toTopOf="@id/location_name"
+            app:layout_constraintBottom_toBottomOf="@id/location_name"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/unavailable_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Unavailable"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/open_sans_r"
+            android:background="@drawable/dialog_bg"
+            android:backgroundTint="@color/salmon"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/_6sdp"
+            android:paddingEnd="@dimen/_6sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:paddingBottom="@dimen/_3sdp"
+            android:visibility="invisible"
+            app:layout_constraintTop_toTopOf="@id/location_name"
+            app:layout_constraintBottom_toBottomOf="@id/location_name"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

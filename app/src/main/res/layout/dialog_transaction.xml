@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:paddingTop="@dimen/_8sdp"
+    android:paddingStart="@dimen/_12sdp"
+    android:paddingEnd="0dp"
+    android:paddingBottom="@dimen/_3sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/dialog_transaction_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_transaction"
+        android:textSize="@dimen/_12ssp"
+        android:textColor="@android:color/black"
+        android:fontFamily="@font/open_sans_r"
+        android:layout_marginTop="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/fish_name_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:background="@drawable/card_outline_bg"
+        app:layout_constraintTop_toBottomOf="@id/dialog_transaction_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/transaction_fish_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="@dimen/_6sdp"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        android:background="@drawable/card_outline_bg"
+        android:inputType="numberDecimal"
+        android:hint="@string/fish_amount_in_kg"
+        app:layout_constraintTop_toBottomOf="@id/fish_name_spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/transaction_amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_8sdp"
+        android:paddingStart="@dimen/_6sdp"
+        android:paddingEnd="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:background="@drawable/card_outline_bg"
+        android:hint="@string/transaction_amount_in_tk"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        android:inputType="numberDecimal"
+        app:layout_constraintTop_toBottomOf="@id/transaction_fish_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/transaction_type_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:text="@string/transaction_type"
+        tools:text="Transaction Type"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/open_sans_r"
+        app:layout_constraintTop_toBottomOf="@id/transaction_amount"
+        app:layout_constraintStart_toStartOf="@id/transaction_amount"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintTop_toTopOf="@id/transaction_type_title"
+        app:layout_constraintStart_toEndOf="@id/transaction_type_title"
+        app:layout_constraintBottom_toBottomOf="@id/transaction_type_title">
+
+        <RadioButton
+            android:id="@+id/radio_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buy"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"/>
+
+        <RadioButton
+            android:id="@+id/radio_sell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sell"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"
+            android:layout_marginStart="@dimen/_8sdp"/>
+
+    </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/transaction_confirm"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/ripple_button_bg_transparent"
+        android:text="@string/confirm"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/prussian_blue"
+        android:textAllCaps="false"
+        android:fontFamily="@font/open_sans_r"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        app:layout_constraintEnd_toStartOf="@id/transaction_cancel"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/transaction_cancel"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@drawable/ripple_button_bg_transparent"
+        android:text="@string/cancel"
+        android:textSize="@dimen/_10ssp"
+        android:textColor="@color/salmon"
+        android:textAllCaps="false"
+        android:fontFamily="@font/open_sans_r"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_4sdp"
+        app:layout_constraintTop_toBottomOf="@id/radio_group"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,6 @@
 
     <style name="ToolbarTheme" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">@dimen/_13sdp</item>
-        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">@font/open_sans_r</item>
     </style>

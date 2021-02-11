@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.techmave.fisherville">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".app.FisherApp"
         android:allowBackup="true"
@@ -13,22 +17,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
-        <activity android:name=".view.SplashActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar">
-        </activity>
-
-        <activity android:name=".view.activity.LoginActivity"
+        <activity android:name=".view.activity.FishActivity"></activity>
+        <activity
+            android:name=".view.activity.NewsActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".view.SplashActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
+        <activity
+            android:name=".view.activity.LoginActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.activity.DashboardActivity"
+            android:theme="@style/Theme.Design.Light.NoActionBar" />
 
-        <activity android:name=".view.activity.DashboardActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"/>
-
+        <service
+            android:name=".service.WeatherService"
+            android:exported="false" />
     </application>
 
 </manifest>
