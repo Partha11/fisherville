@@ -1,68 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:foreground="?selectableItemBackground"
     android:layout_marginTop="@dimen/_3sdp"
     android:layout_marginBottom="@dimen/_3sdp"
     android:layout_marginStart="@dimen/_6sdp"
-    android:layout_marginEnd="@dimen/_6sdp"
-    app:cardCornerRadius="@dimen/_4sdp">
+    android:layout_marginEnd="@dimen/_6sdp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/_8sdp">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/market_thumb"
-            android:layout_width="@dimen/_48sdp"
-            android:layout_height="@dimen/_48sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:src="@drawable/ic_smartphone"
-            android:src="@drawable/ic_placeholder"/>
-
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/market_fish_name"
+            android:id="@+id/day_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            tools:text="Hilsha"
+            tools:text="Sunday"
             android:textSize="@dimen/_11ssp"
             android:textColor="@color/font_color"
             android:fontFamily="@font/open_sans_r"
             android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginStart="@dimen/_6sdp"
             android:layout_marginEnd="@dimen/_6sdp"
             android:maxLines="1"
             android:ellipsize="end"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/market_thumb"
-            app:layout_constraintEnd_toStartOf="@id/price_up_badge"/>
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/weather_thumb"
+            android:layout_width="@dimen/_16sdp"
+            android:layout_height="@dimen/_16sdp"
+            android:scaleType="fitXY"
+            tools:src="@drawable/ic_smartphone"
+            android:layout_marginEnd="@dimen/_4sdp"
+            app:layout_constraintTop_toTopOf="@id/weather_summary"
+            app:layout_constraintBottom_toBottomOf="@id/weather_summary"
+            app:layout_constraintEnd_toStartOf="@id/weather_summary"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/market_content"
-            android:layout_width="0dp"
+            android:id="@+id/weather_summary"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="This is a news summary..."
+            tools:text="Partly Cloudy"
             android:textSize="@dimen/_10ssp"
-            android:textColor="#7E7878"
+            android:textColor="@color/font_color"
             android:fontFamily="@font/open_sans_r"
             android:maxLines="2"
             android:ellipsize="end"
-            android:layout_marginTop="@dimen/_4sdp"
-            app:layout_constraintTop_toBottomOf="@id/market_fish_name"
-            app:layout_constraintStart_toStartOf="@id/market_fish_name"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/day_name"
             app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/price_up_badge"
+            android:id="@+id/air_pressure"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="500"
+            tools:text="Pressure: 1025 KPa"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintTop_toTopOf="@id/weather_summary"
+            app:layout_constraintBottom_toBottomOf="@id/weather_summary"
+            app:layout_constraintStart_toStartOf="@id/day_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/wind_speed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Wind Speed: 1.01 Km/h"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans_r"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/_3sdp"
+            app:layout_constraintTop_toBottomOf="@id/air_pressure"
+            app:layout_constraintStart_toStartOf="@id/day_name"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/temp_up_badge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="23.4"
             android:textSize="@dimen/_9ssp"
             android:textColor="@android:color/white"
             android:fontFamily="@font/open_sans_r"
@@ -76,15 +100,15 @@
             android:paddingTop="@dimen/_3sdp"
             android:paddingBottom="@dimen/_3sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            app:layout_constraintTop_toTopOf="@id/market_fish_name"
-            app:layout_constraintBottom_toBottomOf="@id/market_fish_name"
-            app:layout_constraintEnd_toStartOf="@id/price_down_badge"/>
+            app:layout_constraintTop_toTopOf="@id/day_name"
+            app:layout_constraintBottom_toBottomOf="@id/day_name"
+            app:layout_constraintEnd_toStartOf="@id/temp_down_badge"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/price_down_badge"
+            android:id="@+id/temp_down_badge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="500"
+            tools:text="18.2"
             android:textSize="@dimen/_9ssp"
             android:textColor="@android:color/white"
             android:fontFamily="@font/open_sans_r"
@@ -97,8 +121,8 @@
             android:paddingEnd="@dimen/_6sdp"
             android:paddingTop="@dimen/_3sdp"
             android:paddingBottom="@dimen/_3sdp"
-            app:layout_constraintTop_toTopOf="@id/market_fish_name"
-            app:layout_constraintBottom_toBottomOf="@id/market_fish_name"
+            app:layout_constraintTop_toTopOf="@id/day_name"
+            app:layout_constraintBottom_toBottomOf="@id/day_name"
             app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

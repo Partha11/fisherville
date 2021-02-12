@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.ModelTransactionBinding
 import com.techmave.fisherville.model.Transaction
@@ -27,6 +28,11 @@ class TransactionAdapter(private val context: Context?): RecyclerView.Adapter<Tr
 
         holder.binding.transactionFishName.text = item.fishName
         holder.binding.transactionContent.text = text
+
+        if (!item.fishThumb.isNullOrEmpty()) {
+
+            Picasso.get().load(item.fishThumb).into(holder.binding.transactionThumb)
+        }
 
         if (item.transactionType == 0L) {
 

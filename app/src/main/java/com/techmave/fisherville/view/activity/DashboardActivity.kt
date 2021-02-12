@@ -8,6 +8,8 @@ import android.location.LocationListener
 import android.location.LocationManager
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -15,12 +17,15 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.Query
 import com.google.gson.Gson
 import com.techmave.fisherville.R
+import com.techmave.fisherville.adapter.MarketAdapter
 import com.techmave.fisherville.adapter.NewsAdapter
 import com.techmave.fisherville.databinding.ActivityDashboardBinding
+import com.techmave.fisherville.dialog.CustomDialog
 import com.techmave.fisherville.dialog.TransactionDialog
 import com.techmave.fisherville.listener.FragmentListener
 import com.techmave.fisherville.model.Market
@@ -36,7 +41,8 @@ import com.techmave.fisherville.view.fragment.NewsFragment
 import com.techmave.fisherville.view.fragment.ProfileFragment
 import com.techmave.fisherville.viewmodel.DashboardViewModel
 
-class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, TransactionDialog.TransactionListener, NewsAdapter.NewsInteractionListener {
+class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, TransactionDialog.TransactionListener,
+        NewsAdapter.NewsInteractionListener, MarketAdapter.MarketItemClickListener {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var viewModel: DashboardViewModel
@@ -46,6 +52,8 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
 
     private var fragments = mutableListOf<Fragment>()
     private var fishes = mutableListOf<Market>()
+
+    private var doubleBackPressed = false
 
     companion object {
 
@@ -68,6 +76,19 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
 
         updateBasicInfo()
         startWeatherService()
+    }
+
+    override fun onBackPressed() {
+
+        if (doubleBackPressed) {
+
+            super.onBackPressed()
+
+        } else {
+
+            Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show()
+            Handler(Looper.getMainLooper()).postDelayed({ doubleBackPressed = false }, 2000)
+        }
     }
 
     private fun initialize() {
@@ -314,6 +335,41 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
         showTransactionDialog(fishes)
     }
 
+    override fun onWeatherButtonClicked() {
+
+        val intent = Intent(this, WeatherActivity::class.java)
+        startActivity(intent)
+    }
+
+    override fun onSignOutClicked() {
+
+        val dialog = CustomDialog()
+
+        dialog.title = getString(R.string.warning)
+        dialog.message = getString(R.string.sign_out_msg)
+        dialog.enableConfirmButton = true
+
+        dialog.listener = object : CustomDialog.OnClickListener {
+
+            override fun onConfirmed() {
+
+                val user = FirebaseAuth.getInstance().currentUser
+
+                if (user != null) {
+
+                    FirebaseAuth.getInstance().signOut()
+                }
+
+                prefs?.isLoggedIn = false
+
+                finishAffinity()
+                startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
+            }
+        }
+
+        dialog.show(supportFragmentManager, "dialog")
+    }
+
     override fun onTransactionAdded(transaction: Transaction) {
 
         isTransactionVisible = false
@@ -329,5 +385,14 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
         startActivity(intent)
 
         viewModel.updateNewsClickCount(news)
+    }
+
+    override fun onMarketItemClicked(market: Market) {
+
+        val json = Gson().toJson(market)
+        val intent = Intent(this, FishActivity::class.java)
+
+        intent.putExtra(Constants.INTENT_DATA_FISH, json)
+        startActivity(intent)
     }
 }

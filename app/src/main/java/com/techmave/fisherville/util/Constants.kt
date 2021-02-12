@@ -29,4 +29,5 @@ object Constants {
     const val INTENT_FLAG_LON = "lon"
 
     const val INTENT_DATA_NEWS = "news"
+    const val INTENT_DATA_FISH = "fish"
 }

@@ -5,16 +5,16 @@
     android:viewportWidth="720"
     android:viewportHeight="480">
 
-    <path android:fillColor="@color/salmon"
+    <path android:fillColor="@color/star_command_blue"
         android:pathData="M 0,0 720,0 720,480 0,480 Z"/>
 
-    <path android:fillColor="#41358A63"
+    <path android:fillColor="#41086597"
         android:pathData="M 60,0 140,0 0,155 0,70 Z"/>
 
-    <path android:fillColor="#2273DFAD"
+    <path android:fillColor="#221BA3EC"
         android:pathData="M 140,0 210,0 0,240 0,155 Z"/>
 
-    <path android:fillColor="#41358A63"
+    <path android:fillColor="#41086597"
         android:pathData="M 500,480 580,480 720,350 720,270 Z"/>
 
 </vector>

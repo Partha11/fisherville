@@ -59,7 +59,7 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
         override fun onVerificationFailed(exception: FirebaseException) {
 
             Log.d("Verification:Failed", exception.localizedMessage!!)
-            Toast.makeText(this@LoginActivity, exception.localizedMessage, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(this@LoginActivity, exception.localizedMessage, Toast.LENGTH_SHORT).show()
 
             if (otpCodeDialog?.isAdded == true || otpCodeDialog?.isVisible == true) {
 

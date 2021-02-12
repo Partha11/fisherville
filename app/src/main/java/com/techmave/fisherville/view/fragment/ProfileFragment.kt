@@ -66,6 +66,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         adapter = TransactionAdapter(context)
 
         binding.transactionFab.setOnClickListener(this)
+        binding.signOutText.setOnClickListener(this)
 
         updateUi()
         setupRecyclerView()
@@ -131,6 +132,13 @@ class ProfileFragment : Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
 
-        listener?.onTransactionAddClicked()
+        if (v?.id == R.id.transaction_fab) {
+
+            listener?.onTransactionAddClicked()
+
+        } else if (v?.id == R.id.sign_out_text) {
+
+            listener?.onSignOutClicked()
+        }
     }
 }

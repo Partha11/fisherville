@@ -44,7 +44,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:text="@string/submit"
         android:textSize="@dimen/_10ssp"
-        android:textColor="@color/prussian_blue"
+        android:textColor="@color/star_command_blue"
         android:textAllCaps="false"
         android:fontFamily="@font/open_sans_r"
         android:background="@drawable/ripple_button_bg_transparent"

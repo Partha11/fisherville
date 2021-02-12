@@ -20,7 +20,7 @@
             app:titleTextAppearance="@style/ToolbarTheme"
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:contentScrim="@color/salmon"
+            app:contentScrim="@color/star_command_blue"
             android:fitsSystemWindows="true">
 
             <androidx.appcompat.widget.AppCompatImageView

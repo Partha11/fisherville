@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.FishActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/star_command_blue"
+        app:titleTextColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:titleTextAppearance="@style/ToolbarTheme"/>
+
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
@@ -14,8 +25,8 @@
         android:layout_marginStart="@dimen/_10sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/dialog_bg"
-        android:elevation="@dimen/_4sdp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="@dimen/_3sdp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
@@ -23,8 +34,8 @@
         android:id="@+id/fish_thumb"
         android:layout_width="@dimen/_90sdp"
         android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginStart="@dimen/_8sdp"
         tools:src="@drawable/ic_smartphone"
         android:scaleType="fitXY"
@@ -43,6 +54,7 @@
         android:fontFamily="@font/open_sans_r"
         android:elevation="@dimen/_4sdp"
         android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_8sdp"
         app:layout_constraintTop_toTopOf="@id/fish_thumb"
         app:layout_constraintStart_toEndOf="@id/fish_thumb"
         app:layout_constraintEnd_toEndOf="@id/view"/>
@@ -62,6 +74,29 @@
         app:layout_constraintStart_toStartOf="@id/fish_name"
         app:layout_constraintEnd_toEndOf="@id/view"/>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/location_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Market Locations"
+        android:text="@string/market_locations"
+        android:textColor="@color/salmon"
+        android:textSize="@dimen/_12ssp"
+        android:fontFamily="@font/open_sans_r"
+        android:layout_marginTop="@dimen/_12sdp"
+        app:layout_constraintTop_toBottomOf="@id/view"
+        app:layout_constraintStart_toStartOf="@id/view"/>
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginStart="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="@id/location_title"
+        app:layout_constraintBottom_toBottomOf="@id/location_title"
+        app:layout_constraintStart_toEndOf="@id/location_title"
+        app:layout_constraintEnd_toEndOf="@id/view"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fish_recycler"
         android:layout_width="0dp"
@@ -70,9 +105,22 @@
         android:scrollbars="none"
         tools:listitem="@layout/model_fish"
         tools:itemCount="5"
-        android:layout_marginTop="@dimen/_12sdp"
-        app:layout_constraintTop_toBottomOf="@id/view"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/location_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fish_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:src="@drawable/ic_plus"
+        android:contentDescription="@string/app_name"
+        android:backgroundTint="@color/salmon"
+        app:borderWidth="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

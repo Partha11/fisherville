@@ -24,6 +24,8 @@
     <string name="enter_otp">Enter Code</string>
 
     <string name="temperature_text">%s° C</string>
+    <string name="air_pressure">Atmospheric Pressure: %s hPa</string>
+    <string name="wind_speed">Wind Speed: %s m/s</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="today_transactions">Today\'s Transactions</string>
@@ -43,6 +45,24 @@
     <string name="transaction_type">Transaction Type:</string>
 
     <string name="new_badge">New</string>
+    <string name="market_locations">Market Locations</string>
+
+    <string name="highest_price">Highest Price: %s</string>
+    <string name="lowest_price">Lowest Price: %s</string>
+    <string name="available">Available</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="check_weather_report">Check Weather Report</string>
+    <string name="next_days">Next Days</string>
+
+    <string name="icon_api">http://openweathermap.org/img/wn/%s@2x.png</string>
+    <string name="icon_api_regular">http://openweathermap.org/img/wn/%s.png</string>
+    <string name="warning">Warning</string>
+    <string name="sign_out_msg">Are you sure you want to sign out?</string>
+    <string name="sign_out">Sign Out</string>
+
+    <string name="news">News</string>
+    <string name="market">Market</string>
+    <string name="profile">Profile</string>
 
     <plurals name="news_update">
         <item quantity="one">%1$d News Update\nLast updated: %2$s</item>

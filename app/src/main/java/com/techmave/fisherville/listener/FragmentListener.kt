@@ -14,4 +14,6 @@ interface FragmentListener {
     fun getDailyTransactions(): LiveData<DataSnapshot?>?
 
     fun onTransactionAddClicked()
+    fun onWeatherButtonClicked()
+    fun onSignOutClicked()
 }

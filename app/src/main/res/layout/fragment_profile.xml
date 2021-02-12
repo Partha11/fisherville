@@ -42,15 +42,18 @@
         android:textColor="@android:color/white"/>
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/active_badge"
+        android:id="@+id/sign_out_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Active"
-        android:textSize="@dimen/_9ssp"
+        tools:text="Sign Out"
+        android:text="@string/sign_out"
+        android:textSize="@dimen/_10ssp"
         android:textColor="@android:color/white"
         android:fontFamily="@font/open_sans_r"
         android:background="@drawable/dialog_bg"
-        android:backgroundTint="@color/honey_yellow"
+        android:backgroundTint="@color/salmon"
+        android:drawableStart="@drawable/ic_sign_out"
+        android:drawablePadding="@dimen/_5sdp"
         android:gravity="center_vertical"
         android:paddingStart="@dimen/_6sdp"
         android:paddingEnd="@dimen/_6sdp"

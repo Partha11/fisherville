@@ -74,6 +74,17 @@ object Utility {
     }
 
     @JvmStatic
+    fun getDayStringFromTimestamp(millis: Long): String {
+
+        val c = Calendar.getInstance()
+        val s = SimpleDateFormat("EEEE", Locale.US)
+
+        c.timeInMillis = millis * 1000L
+
+        return s.format(c.time)
+    }
+
+    @JvmStatic
     fun isGPSEnabled(context: Context): Boolean {
 
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager

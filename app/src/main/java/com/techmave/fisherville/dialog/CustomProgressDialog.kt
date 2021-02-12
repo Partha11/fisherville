@@ -4,6 +4,7 @@ import android.graphics.Point
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.DialogFragment
+import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.DialogProgressBinding
 
 class CustomProgressDialog : DialogFragment() {
@@ -15,6 +16,16 @@ class CustomProgressDialog : DialogFragment() {
 
         binding = DialogProgressBinding.inflate(inflater)
         return binding.root
+    }
+
+    override fun onStart() {
+
+        super.onStart()
+
+        if (dialog != null) {
+
+            dialog?.window?.setWindowAnimations(R.style.DialogAnimation)
+        }
     }
 
     override fun onResume() {

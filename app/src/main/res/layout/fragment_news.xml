@@ -21,13 +21,13 @@
             app:titleTextAppearance="@style/ToolbarTheme"
             app:expandedTitleTextAppearance="@android:color/transparent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-            app:contentScrim="@color/salmon"
+            app:contentScrim="@color/star_command_blue"
             android:fitsSystemWindows="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
-                android:background="@color/salmon"
+                android:background="@color/star_command_blue"
                 android:padding="@dimen/_8sdp"
                 android:visibility="visible">
 
@@ -35,7 +35,7 @@
                     android:id="@+id/news_welcome_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Good Night, Abir"
+                    tools:text="Good Night, Abir"
                     android:textSize="@dimen/_14ssp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
@@ -75,7 +75,7 @@
                     android:id="@+id/news_update_count_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4 News Updates\nLast Updated at 08:30 PM"
+                    tools:text="4 News Updates\nLast Updated at 08:30 PM"
                     android:textSize="@dimen/_10ssp"
                     android:textColor="@android:color/white"
                     android:fontFamily="@font/open_sans_r"
@@ -89,11 +89,12 @@
                     android:id="@+id/news_weather_report_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Check Weather Report"
+                    android:text="@string/check_weather_report"
                     android:textSize="@dimen/_11sdp"
                     android:textColor="@android:color/white"
                     android:fontFamily="@font/open_sans_r"
                     android:layout_marginEnd="@dimen/_6sdp"
+                    android:background="?selectableItemBackground"
                     app:layout_constraintTop_toTopOf="@id/news_right_arrow"
                     app:layout_constraintBottom_toBottomOf="@id/news_right_arrow"
                     app:layout_constraintEnd_toStartOf="@id/news_right_arrow"/>

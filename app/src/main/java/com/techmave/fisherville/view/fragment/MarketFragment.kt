@@ -2,6 +2,7 @@ package com.techmave.fisherville.view.fragment
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.techmave.fisherville.adapter.MarketAdapter
 import com.techmave.fisherville.databinding.FragmentMarketBinding
 import com.techmave.fisherville.listener.FragmentListener
@@ -55,7 +57,7 @@ class MarketFragment : Fragment() {
 
     private fun initialize() {
 
-        adapter = MarketAdapter()
+        adapter = MarketAdapter(requireContext())
 
         initializeRecyclerView()
         setupMarketListener()
@@ -87,6 +89,8 @@ class MarketFragment : Fragment() {
 
                         adapter?.items?.add(item)
                         adapter?.notifyItemInserted((adapter?.itemCount ?: 1) - 1)
+
+                        Log.d("Price", Gson().toJson(item))
                     }
                 }
             }

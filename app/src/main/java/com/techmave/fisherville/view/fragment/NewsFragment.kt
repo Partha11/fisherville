@@ -12,9 +12,9 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
-import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.gson.Gson
 import com.techmave.fisherville.R
 import com.techmave.fisherville.adapter.NewsAdapter
@@ -25,10 +25,8 @@ import com.techmave.fisherville.model.OpenWeather
 import com.techmave.fisherville.util.Constants
 import com.techmave.fisherville.util.SharedPrefs
 import com.techmave.fisherville.util.Utility
-import java.text.SimpleDateFormat
-import java.util.*
 
-class NewsFragment : Fragment() {
+class NewsFragment : Fragment(), View.OnClickListener {
 
     private lateinit var binding: FragmentNewsBinding
 
@@ -70,6 +68,16 @@ class NewsFragment : Fragment() {
         initialize()
     }
 
+    override fun onResume() {
+
+        super.onResume()
+
+        if (prefs?.weatherData != "") {
+
+            updateWeatherUi(Gson().fromJson(prefs?.weatherData, OpenWeather::class.java))
+        }
+    }
+
     private fun initialize() {
 
         adapter = NewsAdapter(requireContext())
@@ -80,23 +88,24 @@ class NewsFragment : Fragment() {
 //        binding.collapsingToolbar.setExpandedTitleColor(ContextCompat.getColor(requireContext(), android.R.color.transparent))
 //        binding.collapsingToolbar.setCollapsedTitleTextColor(Color.rgb(255, 255, 255))
 
+        binding.newsWeatherReportText.setOnClickListener(this)
+
         setupCollapsingToolbar()
         setupRecyclerView()
         setupNewsListener()
         setupWeatherListener()
         updateUi()
 
-        if (prefs?.weatherData != "") {
+        prefs?.getPrefs()?.registerOnSharedPreferenceChangeListener { _, key ->
 
-            updateWeatherUi(Gson().fromJson(prefs?.weatherData, OpenWeather::class.java))
+            if (key == Constants.PREF_WEATHER_DATA) {
+
+                if (prefs?.weatherData != "") {
+
+                    updateWeatherUi(Gson().fromJson(prefs?.weatherData, OpenWeather::class.java))
+                }
+            }
         }
-
-        val c = Calendar.getInstance()
-        val s = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.US)
-
-        c.timeInMillis = 1612744557 * 1000L
-
-        Log.d("Time", s.format(c.time))
     }
 
     private fun setupRecyclerView() {
@@ -135,45 +144,99 @@ class NewsFragment : Fragment() {
 
         updateCount = 0
 
-        listener?.getNews()?.addChildEventListener(object: ChildEventListener {
+        listener?.getNews()?.addValueEventListener(object: ValueEventListener {
 
-            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+            override fun onDataChange(snapshot: DataSnapshot) {
 
-                val item = snapshot.getValue(News::class.java)
+                Log.d("Data", snapshot.toString())
 
-                if (item != null) {
+                try {
 
-                    adapter?.items?.add(0, item)
-                    adapter?.notifyItemInserted(0)
+                    adapter?.items?.clear()
+                    adapter?.notifyDataSetChanged()
 
-                    if (item.timestamp >= (System.currentTimeMillis() - (60 * 60 * 24 * 1000))) {
+                    for (data in snapshot.children) {
 
-                        updateCount++
+                        val item = data.getValue(News::class.java)
+                        Log.d("Data", Gson().toJson(item))
+
+                        if (item != null) {
+
+                            adapter?.items?.add(0, item)
+                            adapter?.notifyItemInserted(0)
+
+                            if (item.timestamp >= (System.currentTimeMillis() - (60 * 60 * 24 * 1000))) {
+
+                                updateCount++
+                            }
+
+                            lastUpdate = item.timestamp
+                            updateUi()
+                        }
                     }
 
-                    lastUpdate = item.timestamp
-                    updateUi()
+                } catch (ex: Exception) {
+
+                    Log.d("Exception", ex.localizedMessage, ex)
                 }
             }
 
-            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
-
-                Log.d("Child:Change", previousChildName.toString())
-            }
-
-            override fun onChildRemoved(snapshot: DataSnapshot) {
-                TODO("Not yet implemented")
-            }
-
-            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
-                TODO("Not yet implemented")
-            }
-
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
 
+                Log.d("Error", error.message)
+            }
         })
+
+//        listener?.getNews()?.addChildEventListener(object: ChildEventListener {
+//
+//            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+//
+//                Log.d("Data", snapshot.toString())
+//
+//                try {
+//
+//                    val item = snapshot.getValue(News::class.java)
+//
+//                    if (item != null) {
+//
+//                        adapter?.items?.add(0, item)
+//                        adapter?.notifyItemInserted(0)
+//
+//                        if (item.timestamp >= (System.currentTimeMillis() - (60 * 60 * 24 * 1000))) {
+//
+//                            updateCount++
+//                        }
+//
+//                        lastUpdate = item.timestamp
+//                        updateUi()
+//                    }
+//
+//                } catch (ex: Exception) {
+//
+//                    Log.d("Exception", ex.localizedMessage, ex)
+//                }
+//            }
+//
+//            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+//
+//                Log.d("Child:Change", previousChildName.toString())
+//            }
+//
+//            override fun onChildRemoved(snapshot: DataSnapshot) {
+//
+//                Log.d("Child:Change", "removed")
+//            }
+//
+//            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+//
+//                Log.d("Child:Change", previousChildName.toString())
+//            }
+//
+//            override fun onCancelled(error: DatabaseError) {
+//
+//                Log.d("Child:Change", error.message)
+//            }
+//        })
     }
 
     private fun setupWeatherListener() {
@@ -192,35 +255,6 @@ class NewsFragment : Fragment() {
         }
     }
 
-    private fun retrieveAllNews() {
-
-        listener?.getAllNews()?.observe(viewLifecycleOwner, {
-
-            if (it != null) {
-
-                if (items.isNotEmpty()) {
-
-                    items.clear()
-                }
-
-                for (data in it.children) {
-
-                    val news = data.getValue(News::class.java)
-
-                    if (news != null) {
-
-                        items.add(news)
-                    }
-                }
-
-                items.reverse()
-
-                adapter?.items = items
-                adapter?.notifyDataSetChanged()
-            }
-        })
-    }
-
     private fun updateUi() {
 
         val greetings = "${Utility.getGreetingMessage()}, ${Utility.getFirstPartFromName(prefs?.userName)}"
@@ -236,5 +270,10 @@ class NewsFragment : Fragment() {
 
         binding.newsTemperatureText.text = context?.getString(R.string.temperature_text, temp)
         binding.newsWeatherTypeText.text = Utility.convertStringToUpperCase(data.current?.weather?.get(0)?.description)
+    }
+
+    override fun onClick(v: View?) {
+
+        listener?.onWeatherButtonClicked()
     }
 }

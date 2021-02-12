@@ -10,22 +10,12 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/actionBarSize"
-        android:background="@color/salmon"
+        android:background="@color/star_command_blue"
         app:titleTextColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:titleTextAppearance="@style/ToolbarTheme"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/_16ssp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
@@ -45,12 +35,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:menu="@menu/bottom_navigation"
         app:indicatorEnabled="true"
-        app:indicatorColor="@color/salmon"
+        app:indicatorColor="@color/star_command_blue"
         app:indicatorWidth="@dimen/_10sdp"
         app:indicatorGravity="bottom"
         app:itemFontFamily="@font/open_sans_r"
         app:textColor="@android:color/darker_gray"
-        app:textColorActive="@color/salmon"
+        app:textColorActive="@color/star_command_blue"
         app:textSize="@dimen/_8ssp"
         app:iconSize="@dimen/_12sdp"
         app:iconMargin="@dimen/_2sdp"

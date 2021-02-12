@@ -35,6 +35,16 @@ class CustomOtpDialog(context: Context): DialogFragment(), View.OnClickListener 
         initialize()
     }
 
+    override fun onStart() {
+
+        super.onStart()
+
+        if (dialog != null) {
+
+            dialog?.window?.setWindowAnimations(R.style.DialogAnimation)
+        }
+    }
+
     private fun initialize() {
 
         countDown()

@@ -9,7 +9,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.techmave.fisherville.R
-import com.techmave.fisherville.adapter.FishAdapter
+import com.techmave.fisherville.adapter.SpinnerAdapter
 import com.techmave.fisherville.databinding.DialogTransactionBinding
 import com.techmave.fisherville.model.Market
 import com.techmave.fisherville.model.Transaction
@@ -19,7 +19,7 @@ class TransactionDialog(context: Context): DialogFragment(), View.OnClickListene
     private lateinit var binding: DialogTransactionBinding
 
     private var listener: TransactionListener? = null
-    private var adapter: FishAdapter? = null
+    private var adapter: SpinnerAdapter? = null
     private var market: Market? = null
 
     var items: List<Market> = mutableListOf()
@@ -44,9 +44,19 @@ class TransactionDialog(context: Context): DialogFragment(), View.OnClickListene
         initialize()
     }
 
+    override fun onStart() {
+
+        super.onStart()
+
+        if (dialog != null) {
+
+            dialog?.window?.setWindowAnimations(R.style.DialogAnimation)
+        }
+    }
+
     private fun initialize() {
 
-        adapter = FishAdapter(requireContext(), R.layout.spinner_dropdown, items)
+        adapter = SpinnerAdapter(requireContext(), R.layout.spinner_dropdown, items)
 
         binding.fishNameSpinner.adapter = adapter
         binding.radioGroup.check(R.id.radio_buy)
@@ -105,6 +115,7 @@ class TransactionDialog(context: Context): DialogFragment(), View.OnClickListene
 
                     transaction.fishName = items[position].name
                     transaction.fishId = items[position].id
+                    transaction.fishThumb = items[position].thumb
                     transaction.fishAmount = binding.transactionFishAmount.text.toString().toFloat()
                     transaction.transactionAmount = binding.transactionAmount.text.toString().toFloat()
                     transaction.transactionTime = System.currentTimeMillis()
