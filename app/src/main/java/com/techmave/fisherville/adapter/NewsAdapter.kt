@@ -47,20 +47,23 @@ class NewsAdapter(context: Context): RecyclerView.Adapter<NewsAdapter.ViewHolder
             holder.binding.newsBadge.visibility = View.VISIBLE
         }
 
-        Picasso.get().load(item.thumbnail)
-                .placeholder(R.drawable.ic_placeholder)
-                .into(holder.binding.newsThumb, object: Callback {
+        if (!item.thumbnail.isNullOrEmpty()) {
 
-                    override fun onSuccess() {
+            Picasso.get().load(item.thumbnail)
+                    .placeholder(R.drawable.ic_placeholder)
+                    .into(holder.binding.newsThumb, object: Callback {
 
-                        Log.d("News:Picasso", "Successfully Loaded")
-                    }
+                        override fun onSuccess() {
 
-                    override fun onError(e: Exception?) {
+                            Log.d("News:Picasso", "Successfully Loaded")
+                        }
 
-                        Log.d("News:Picasso", e?.localizedMessage, e)
-                    }
-                })
+                        override fun onError(e: Exception?) {
+
+                            Log.d("News:Picasso", e?.localizedMessage, e)
+                        }
+                    })
+        }
     }
 
     override fun getItemCount(): Int {

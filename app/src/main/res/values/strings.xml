@@ -3,69 +3,69 @@
 
     <string name="app_title">&lt;font color=\"#2e9ee8\"&gt;FISHER&lt;/font&gt;&lt;font color=\"#3ac24a\"&gt;VILLE&lt;/font&gt;</string>
 
-    <string name="initializing">Initializing</string>
-    <string name="sign_in">Sign In</string>
-    <string name="sign_up">Sign Up</string>
+    <string name="initializing">প্রস্তুত করা হচ্ছে</string>
+    <string name="sign_in">সাইন ইন</string>
+    <string name="sign_up">সাইন আপ</string>
     <string name="fisherman">Fisherman</string>
     <string name="seller">Seller</string>
     <string name="customer">Customer</string>
-    <string name="phone_number">Phone Number (Eg. 017xxxxxxxx)</string>
-    <string name="user_name">User Name</string>
-    <string name="resend_otp">Resend OTP</string>
-    <string name="success">Success</string>
+    <string name="phone_number">ফোন নাম্বার (যেমন- 017xxxxxxxx)</string>
+    <string name="user_name">ব্যবহারকারীর নাম</string>
+    <string name="resend_otp">পুনরায় পাঠান</string>
+    <string name="success">সফল</string>
 
-    <string name="welcome">Welcome Back!</string>
-    <string name="sign_in_to_continue">Please sign in to continue</string>
+    <string name="welcome">স্বাগতম!</string>
+    <string name="sign_in_to_continue">অ্যাপে প্রবেশ করতে দয়া করে লগিন করুন</string>
 
     <string name="terms_message">By signing in, you agree to our &lt;font color=\"green\"&gt;Terms of Service &lt;/font&gt; and &lt;font color=\"green\"&gt;Privacy Policy &lt;/font&gt;</string>
-    <string name="code">Code</string>
-    <string name="submit">Submit</string>
-    <string name="resend">Resend Code</string>
-    <string name="enter_otp">Enter Code</string>
+    <string name="code">কোড</string>
+    <string name="submit">সাবমিট</string>
+    <string name="resend">পুনরায় পাঠান</string>
+    <string name="enter_otp">কোড বসান</string>
 
-    <string name="temperature_text">%s° C</string>
-    <string name="air_pressure">Atmospheric Pressure: %s hPa</string>
-    <string name="wind_speed">Wind Speed: %s m/s</string>
+    <string name="temperature_text">%s° সেলসিয়াস</string>
+    <string name="air_pressure">বায়ুচাপ: %s হেক্টোপ্যাসকেল</string>
+    <string name="wind_speed">বাতাসের বেগ: %s মিটার/সেকেন্ড</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="today_transactions">Today\'s Transactions</string>
-    <string name="sold_today">Sold Today</string>
-    <string name="bought_today">Bought Today</string>
-    <string name="transaction_list_empty_message">No Transaction Yet!</string>
+    <string name="today_transactions">আজকের লেনদেন সমূহ</string>
+    <string name="sold_today">আজকের বিক্রি</string>
+    <string name="bought_today">আজকের ক্রয়</string>
+    <string name="transaction_list_empty_message">এখনো কোন লেনদেন হয় নি</string>
 
-    <string name="transaction_text">%1$s Kg | %2$s Bdt</string>
+    <string name="transaction_text">%1$s কেজি | %2$s টাকা</string>
 
-    <string name="buy">Buy</string>
-    <string name="sell">Sell</string>
-    <string name="new_transaction">New Transaction</string>
-    <string name="fish_amount_in_kg">Fish Amount (In Kg)</string>
-    <string name="transaction_amount_in_tk">Transaction Amount (In Tk)</string>
-    <string name="cancel">Cancel</string>
-    <string name="confirm">Confirm</string>
-    <string name="transaction_type">Transaction Type:</string>
+    <string name="buy">ক্রয়</string>
+    <string name="sell">বিক্রয়</string>
+    <string name="new_transaction">নতুন লেনদেন</string>
+    <string name="fish_amount_in_kg">মাছের পরিমাণ (কেজিতে)</string>
+    <string name="transaction_amount_in_tk">লেনদেনের পরিমাণ (টাকায়)</string>
+    <string name="cancel">বাতিল</string>
+    <string name="confirm">নিশ্চিত</string>
+    <string name="transaction_type">লেনদেনের ধরণ:</string>
 
     <string name="new_badge">New</string>
-    <string name="market_locations">Market Locations</string>
+    <string name="market_locations">বাজারের অবস্থানসমূহ</string>
 
-    <string name="highest_price">Highest Price: %s</string>
-    <string name="lowest_price">Lowest Price: %s</string>
+    <string name="highest_price">সর্বোচ্চ মূল্য: %s</string>
+    <string name="lowest_price">সর্বনিম্ন মূল্য: %s</string>
     <string name="available">Available</string>
     <string name="unavailable">Unavailable</string>
-    <string name="check_weather_report">Check Weather Report</string>
-    <string name="next_days">Next Days</string>
+    <string name="check_weather_report">আবহাওয়ার বিস্তারিত রিপোর্ট</string>
+    <string name="next_days">পরবর্তী দিনগুলি</string>
 
     <string name="icon_api">http://openweathermap.org/img/wn/%s@2x.png</string>
     <string name="icon_api_regular">http://openweathermap.org/img/wn/%s.png</string>
-    <string name="warning">Warning</string>
-    <string name="sign_out_msg">Are you sure you want to sign out?</string>
-    <string name="sign_out">Sign Out</string>
+    <string name="warning">সতর্কতা</string>
+    <string name="sign_out_msg">আপনি কি অ্যাপ থেকে সাইন আউট করতে চান?</string>
+    <string name="sign_out">সাইন আউট</string>
 
-    <string name="news">News</string>
-    <string name="market">Market</string>
-    <string name="profile">Profile</string>
+    <string name="news">সংবাদ</string>
+    <string name="market">বাজার</string>
+    <string name="profile">প্রোফাইল</string>
 
     <plurals name="news_update">
-        <item quantity="one">%1$d News Update\nLast updated: %2$s</item>
-        <item quantity="other">%1$d News Updates\nLast updated: %2$s</item>
+        <item quantity="zero">%1$d টি নতুন সংবাদ\nসর্বশেষ আপডেট: %2$s</item>
+        <item quantity="other">%1$d টি নতুন সংবাদ\nসর্বশেষ আপডেট: %2$s</item>
     </plurals>
 </resources>

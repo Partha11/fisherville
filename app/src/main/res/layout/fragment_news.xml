@@ -50,7 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="30"
-                    android:textSize="@dimen/_26sdp"
+                    android:textSize="@dimen/_22sdp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:fontFamily="@font/open_sans_r"

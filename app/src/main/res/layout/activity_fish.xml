@@ -100,13 +100,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fish_recycler"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:overScrollMode="never"
         android:scrollbars="none"
         tools:listitem="@layout/model_fish"
         tools:itemCount="5"
         android:layout_marginTop="@dimen/_10sdp"
         app:layout_constraintTop_toBottomOf="@id/location_title"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
