@@ -1,11 +1,11 @@
 package com.techmave.fisherville.repository
 
 import com.techmave.fisherville.service.ApiClient
-import com.techmave.fisherville.service.ApiInterface
+import com.techmave.fisherville.service.ApiService
 
 class DashboardRepository {
 
-    private val apiInterface = ApiClient.createService(ApiInterface::class.java)
+    private val apiInterface = ApiClient.createService(ApiService::class.java)
 
     companion object {
 

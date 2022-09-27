@@ -25,11 +25,11 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.techmave.fisherville.R
 import com.techmave.fisherville.callback.OnOtpReceived
 import com.techmave.fisherville.databinding.ActivityLoginBinding
-import com.techmave.fisherville.dialog.CustomOtpDialog
-import com.techmave.fisherville.dialog.CustomProgressDialog
 import com.techmave.fisherville.util.Constants
 import com.techmave.fisherville.util.SharedPrefs
 import com.techmave.fisherville.util.Utility
+import com.techmave.fisherville.view.dialog.CustomProgress
+import com.techmave.fisherville.view.dialog.OtpDialog
 import com.techmave.fisherville.viewmodel.LoginViewModel
 import java.util.concurrent.TimeUnit
 
@@ -39,8 +39,8 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginViewModel
 
-    private var progressDialog: CustomProgressDialog? = null
-    private var otpCodeDialog: CustomOtpDialog? = null
+    private var progressDialog: CustomProgress? = null
+    private var otpCodeDialog: OtpDialog? = null
 
     private var prefs: SharedPrefs? = null
 
@@ -66,7 +66,7 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
                 otpCodeDialog?.dismiss()
             }
 
-            prefs?.isLoggedIn = true
+            prefs?.loggedIn = true
             prefs?.userNumber = userNumber
 
             switchActivity()
@@ -100,21 +100,21 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         prefs = SharedPrefs(this)
 
-        progressDialog = CustomProgressDialog()
-        otpCodeDialog = CustomOtpDialog(this)
+        progressDialog = CustomProgress()
+//        otpCodeDialog = OtpDialog(this)
 
         progressDialog?.isCancelable = false
 
         binding.loginLogoTitle.text = Utility.fromHtml(getString(R.string.app_title))
-        binding.radioSignIn.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans_r))
-        binding.radioSignUp.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans_r))
+        binding.radioSignIn.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans))
+        binding.radioSignUp.setTypeface(ResourcesCompat.getFont(this, R.font.open_sans))
 
         binding.radioGroup.position = 0
         binding.radioGroup.setOnPositionChangedListener(this)
 
         binding.loginButton.setOnClickListener(this)
 
-        if (prefs?.isLoggedIn == false) {
+        if (prefs?.loggedIn == false) {
 
             initiateSplashAnimation()
 
@@ -179,7 +179,7 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
     private fun authenticate(credential: PhoneAuthCredential) {
 
         progressDialog?.show(supportFragmentManager, "progress")
-        progressDialog?.setMessage("Please Wait...")
+//        progressDialog?.setMessage("Please Wait...")
 
         viewModel.authenticate(credential).observe(this, {
 
@@ -217,7 +217,7 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
                 userNumber = binding.loginPhoneNumber.text.toString().trim()
 
                 progressDialog?.show(supportFragmentManager, "progress")
-                progressDialog?.setMessage("Please Wait...")
+//                progressDialog?.setMessage("Please Wait...")
 
                 val auth = FirebaseAuth.getInstance()
                 val options = PhoneAuthOptions.newBuilder(auth)
@@ -238,7 +238,7 @@ class LoginActivity : AppCompatActivity(), OnOtpReceived, View.OnClickListener, 
         val credential = PhoneAuthProvider.getCredential(verifyId, code)
 
         progressDialog?.show(supportFragmentManager, "progress")
-        progressDialog?.setMessage("Validating...")
+//        progressDialog?.setMessage("Validating...")
 
         authenticate(credential)
     }

@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
 import com.techmave.fisherville.R
 import com.techmave.fisherville.adapter.WeatherAdapter
 import com.techmave.fisherville.databinding.ActivityWeatherBinding
@@ -47,7 +46,7 @@ class WeatherActivity : AppCompatActivity() {
 
             val icon = getString(R.string.icon_api, weather.current?.weather?.get(0)?.icon)
 
-            Picasso.get().load(icon).into(binding.weatherThumb)
+//            Picasso.get().load(icon).into(binding.weatherThumb)
 
             populateRecylerView(weather)
         }

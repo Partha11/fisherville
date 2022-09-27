@@ -1,58 +1,50 @@
 package com.techmave.fisherville.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.ModelTransactionBinding
 import com.techmave.fisherville.model.Transaction
-import com.techmave.fisherville.util.Utility
+import javax.inject.Inject
 
-class TransactionAdapter(private val context: Context?): RecyclerView.Adapter<TransactionAdapter.ViewHolder>() {
+class TransactionAdapter @Inject constructor(): ListAdapter<Transaction, TransactionAdapter.ViewHolder>(Transaction.TransactionDiffUtil) {
 
-    var items = mutableListOf<Transaction>()
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.model_transaction, parent, false)
-        return ViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(ModelTransactionBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val item = items[position]
-        val text = context?.getString(R.string.transaction_text, Utility.convertToOneDecimalPoints(item.fishAmount), Utility.convertToOneDecimalPoints(item.transactionAmount))
+        getItem(position)?.let { holder.bind(it) }
 
-        holder.binding.transactionFishName.text = item.fishName
-        holder.binding.transactionContent.text = text
+//        val item = items[position]
+//        val text = context?.getString(R.string.transaction_text, Utility.convertToOneDecimalPoints(item.fishAmount), Utility.convertToOneDecimalPoints(item.transactionAmount))
+//
+//        holder.binding.transactionFishName.text = item.fishName
+//        holder.binding.transactionContent.text = text
 
-        if (!item.fishThumb.isNullOrEmpty()) {
+//        if (!item.fishThumb.isNullOrEmpty()) {
+//
+//            Picasso.get().load(item.fishThumb).into(holder.binding.transactionThumb)
+//        }
 
-            Picasso.get().load(item.fishThumb).into(holder.binding.transactionThumb)
-        }
-
-        if (item.transactionType == 0L) {
-
-            holder.binding.transactionTypeBadgeBuy.visibility = View.VISIBLE
-            holder.binding.transactionTypeBadgeSell.visibility = View.INVISIBLE
-
-        } else {
-
-            holder.binding.transactionTypeBadgeSell.visibility = View.VISIBLE
-            holder.binding.transactionTypeBadgeBuy.visibility = View.INVISIBLE
-        }
+//        if (item.transactionType == 0L) {
+//
+//            holder.binding.transactionTypeBadgeBuy.visibility = View.VISIBLE
+//            holder.binding.transactionTypeBadgeSell.visibility = View.INVISIBLE
+//
+//        } else {
+//
+//            holder.binding.transactionTypeBadgeSell.visibility = View.VISIBLE
+//            holder.binding.transactionTypeBadgeBuy.visibility = View.INVISIBLE
+//        }
     }
 
-    override fun getItemCount(): Int {
+    inner class ViewHolder(val binding: ModelTransactionBinding): RecyclerView.ViewHolder(binding.root) {
 
-        return items.size
-    }
+        fun bind(transaction: Transaction) {
 
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-
-        var binding: ModelTransactionBinding = ModelTransactionBinding.bind(view)
+            binding.transaction = transaction
+            binding.executePendingBindings()
+        }
     }
 }

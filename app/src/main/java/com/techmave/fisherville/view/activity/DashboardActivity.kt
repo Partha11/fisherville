@@ -23,26 +23,20 @@ import com.google.firebase.database.Query
 import com.google.gson.Gson
 import com.techmave.fisherville.R
 import com.techmave.fisherville.adapter.MarketAdapter
-import com.techmave.fisherville.adapter.NewsAdapter
 import com.techmave.fisherville.databinding.ActivityDashboardBinding
-import com.techmave.fisherville.dialog.CustomDialog
-import com.techmave.fisherville.dialog.TransactionDialog
-import com.techmave.fisherville.listener.FragmentListener
+import com.techmave.fisherville.listener._FragmentListener
 import com.techmave.fisherville.model.Market
-import com.techmave.fisherville.model.News
 import com.techmave.fisherville.model.Transaction
 import com.techmave.fisherville.model.User
 import com.techmave.fisherville.service.WeatherService
 import com.techmave.fisherville.util.Constants
 import com.techmave.fisherville.util.SharedPrefs
 import com.techmave.fisherville.util.Utility
-import com.techmave.fisherville.view.fragment.MarketFragment
-import com.techmave.fisherville.view.fragment.NewsFragment
-import com.techmave.fisherville.view.fragment.ProfileFragment
+import com.techmave.fisherville.view.dialog.CustomDialog
+import com.techmave.fisherville.view.dialog.TransactionDialog
 import com.techmave.fisherville.viewmodel.DashboardViewModel
 
-class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, TransactionDialog.TransactionListener,
-        NewsAdapter.NewsInteractionListener, MarketAdapter.MarketItemClickListener {
+class DashboardActivity : AppCompatActivity(), (Int) -> Unit, _FragmentListener, TransactionDialog.TransactionListener, MarketAdapter.MarketItemClickListener {
 
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var viewModel: DashboardViewModel
@@ -95,9 +89,8 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
 
         setSupportActionBar(binding.toolbar)
 
-        fragments.add(NewsFragment.getInstance())
-        fragments.add(MarketFragment.getInstance())
-        fragments.add(ProfileFragment.getInstance())
+//        fragments.add(MarketFragment.getInstance())
+//        fragments.add(ProfileFragment.getInstance())
 
         viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
         transactionDialog = TransactionDialog(this)
@@ -360,7 +353,7 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
                     FirebaseAuth.getInstance().signOut()
                 }
 
-                prefs?.isLoggedIn = false
+                prefs?.loggedIn = false
 
                 finishAffinity()
                 startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
@@ -376,16 +369,16 @@ class DashboardActivity : AppCompatActivity(), (Int) -> Unit, FragmentListener, 
         viewModel.addNewTransaction(prefs?.userNumber ?: "", transaction)
     }
 
-    override fun onNewsClicked(news: News) {
-
-        val json = Gson().toJson(news)
-        val intent = Intent(this, NewsActivity::class.java)
-
-        intent.putExtra(Constants.INTENT_DATA_NEWS, json)
-        startActivity(intent)
-
-        viewModel.updateNewsClickCount(news)
-    }
+//    override fun onClicked(news: News) {
+//
+//        val json = Gson().toJson(news)
+//        val intent = Intent(this, NewsActivity::class.java)
+//
+//        intent.putExtra(Constants.INTENT_DATA_NEWS, json)
+//        startActivity(intent)
+//
+//        viewModel.updateNewsClickCount(news)
+//    }
 
     override fun onMarketItemClicked(market: Market) {
 

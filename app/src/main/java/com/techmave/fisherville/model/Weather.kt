@@ -2,11 +2,20 @@ package com.techmave.fisherville.model
 
 import com.google.gson.annotations.SerializedName
 
-data class Weather (
+class Weather {
 
-   @SerializedName("id") var id : Int,
-   @SerializedName("main") var main : String,
-   @SerializedName("description") var description : String,
-   @SerializedName("icon") var icon : String
+   @SerializedName("id")
+   var id: Int = 0
 
-)
+   @SerializedName("main")
+   var main: String? = null
+
+   @SerializedName("description")
+   var description: String? = null
+
+   @SerializedName("icon")
+   var icon: String? = null
+
+   @SerializedName("image")
+   var image: String? = null
+}

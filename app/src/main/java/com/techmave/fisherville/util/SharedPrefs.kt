@@ -2,13 +2,17 @@ package com.techmave.fisherville.util
 
 import android.content.Context
 import android.content.SharedPreferences
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class SharedPrefs(context: Context?) {
+@Singleton
+class SharedPrefs @Inject constructor(@ApplicationContext context: Context?) {
 
     private var editor: SharedPreferences.Editor? = null
     private var prefs = context?.getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE)
 
-    var isLoggedIn: Boolean
+    var loggedIn: Boolean
 
         get() = prefs?.getBoolean(Constants.PREF_IS_LOGGED_IN, false) ?: false
 

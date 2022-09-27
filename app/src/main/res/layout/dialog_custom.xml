@@ -8,7 +8,7 @@
     android:paddingStart="@dimen/_8sdp"
     android:paddingEnd="@dimen/_4sdp"
     android:paddingBottom="@dimen/_4sdp"
-    android:background="@drawable/dialog_bg">
+    android:background="@drawable/bg_dialog">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/dialog_custom_title"
@@ -17,7 +17,7 @@
         tools:text="Please Wait"
         android:textSize="@dimen/_12ssp"
         android:textColor="@android:color/black"
-        android:fontFamily="@font/open_sans_r"
+        android:fontFamily="@font/open_sans"
         android:layout_marginTop="@dimen/_4sdp"
         android:layout_marginStart="@dimen/_8sdp"/>
 
@@ -33,7 +33,7 @@
         tools:text="Progress message"
         android:textSize="@dimen/_10ssp"
         android:textColor="@color/font_color"
-        android:fontFamily="@font/open_sans_r"/>
+        android:fontFamily="@font/open_sans"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/cancel_button"
@@ -44,7 +44,7 @@
         android:textSize="@dimen/_10ssp"
         android:textColor="@color/salmon"
         android:textAllCaps="false"
-        android:fontFamily="@font/open_sans_r"
+        android:fontFamily="@font/open_sans"
         android:gravity="center"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_alignParentEnd="true"
@@ -59,7 +59,7 @@
         android:textSize="@dimen/_10ssp"
         android:textColor="@color/star_command_blue"
         android:textAllCaps="false"
-        android:fontFamily="@font/open_sans_r"
+        android:fontFamily="@font/open_sans"
         android:gravity="center"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_toStartOf="@id/cancel_button"

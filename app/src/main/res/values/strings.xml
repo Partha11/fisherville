@@ -14,6 +14,19 @@
     <string name="resend_otp">পুনরায় পাঠান</string>
     <string name="success">সফল</string>
 
+    <string name="label_required">আবশ্যক</string>
+    <string name="label_invalid">নাম্বারটি সঠিক নয়</string>
+
+    <string name="label_continue">এগিয়ে যান</string>
+    <string name="label_cancel">বাতিল করুন</string>
+
+    <string name="label_communicating">সার্ভারের সাথে যোগাযোগ করা হচ্ছে…</string>
+    <string name="label_invalid_otp">আপনার প্রদানকৃত ওটিপি কোডটি সঠিক নয়। দয়া করে আবার চেষ্টা করুন।</string>
+
+    <string name="title_please_wait">অপেক্ষা করুন</string>
+
+    <string name="action_otp">otp</string>
+
     <string name="welcome">স্বাগতম!</string>
     <string name="sign_in_to_continue">অ্যাপে প্রবেশ করতে দয়া করে লগিন করুন</string>
 
@@ -21,7 +34,7 @@
     <string name="code">কোড</string>
     <string name="submit">সাবমিট</string>
     <string name="resend">পুনরায় পাঠান</string>
-    <string name="enter_otp">কোড বসান</string>
+    <string name="enter_otp">আপনার ওটিপি কোড বসান</string>
 
     <string name="temperature_text">%s° সেলসিয়াস</string>
     <string name="air_pressure">বায়ুচাপ: %s হেক্টোপ্যাসকেল</string>

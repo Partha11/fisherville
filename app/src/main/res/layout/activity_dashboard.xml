@@ -38,7 +38,7 @@
         app:indicatorColor="@color/star_command_blue"
         app:indicatorWidth="@dimen/_10sdp"
         app:indicatorGravity="bottom"
-        app:itemFontFamily="@font/open_sans_r"
+        app:itemFontFamily="@font/open_sans"
         app:textColor="@android:color/darker_gray"
         app:textColorActive="@color/star_command_blue"
         app:textSize="@dimen/_8ssp"

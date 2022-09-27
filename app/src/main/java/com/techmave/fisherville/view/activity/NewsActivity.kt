@@ -1,13 +1,9 @@
 package com.techmave.fisherville.view.activity
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.gson.Gson
-import com.squareup.picasso.Callback
-import com.squareup.picasso.Picasso
-import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.ActivityNewsBinding
 import com.techmave.fisherville.model.News
 import com.techmave.fisherville.util.Constants
@@ -52,20 +48,20 @@ class NewsActivity : AppCompatActivity() {
         binding.newsContent.text = news?.content
         binding.newsTime.text = date
 
-        Picasso.get().load(news?.thumbnail)
-                .placeholder(R.drawable.ic_placeholder)
-                .into(binding.newsThumb, object: Callback {
-
-                    override fun onSuccess() {
-
-                        Log.d("News:Picasso", "Successfully Loaded")
-                    }
-
-                    override fun onError(e: Exception?) {
-
-                        Log.d("News:Picasso", e?.localizedMessage, e)
-                    }
-                })
+//        Picasso.get().load(news?.thumbnail)
+//                .placeholder(R.drawable.ic_placeholder)
+//                .into(binding.newsThumb, object: Callback {
+//
+//                    override fun onSuccess() {
+//
+//                        Log.d("News:Picasso", "Successfully Loaded")
+//                    }
+//
+//                    override fun onError(e: Exception?) {
+//
+//                        Log.d("News:Picasso", e?.localizedMessage, e)
+//                    }
+//                })
     }
 
     private fun setupCollapsingToolbar() {

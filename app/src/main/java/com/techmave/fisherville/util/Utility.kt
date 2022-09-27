@@ -7,6 +7,10 @@ import android.text.Html
 import android.text.Spanned
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
+import java.time.Instant
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 
@@ -65,12 +69,7 @@ object Utility {
             return ""
         }
 
-        val calendar = Calendar.getInstance()
-        val sdFormat = SimpleDateFormat("dd MMMM, yyyy", Locale.US)
-
-        calendar.timeInMillis = millis
-
-        return sdFormat.format(calendar.time)
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(millis), ZoneId.systemDefault()).format(DateTimeFormatter.ISO_DATE_TIME)
     }
 
     @JvmStatic

@@ -1,72 +1,52 @@
 package com.techmave.fisherville.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
-import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.ModelMarketBinding
 import com.techmave.fisherville.model.Market
-import com.techmave.fisherville.util.Utility
+import javax.inject.Inject
 
-class MarketAdapter(context: Context): RecyclerView.Adapter<MarketAdapter.ViewHolder>() {
+class MarketAdapter @Inject constructor(): ListAdapter<Market, MarketAdapter.ViewHolder>(Market.MarketDiffUtil) {
 
-    var items = mutableListOf<Market>()
     var listener: MarketItemClickListener? = null
 
-    init {
-
-        if (context is MarketItemClickListener) {
-
-            listener = context
-        }
-    }
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.model_market, parent, false)
-        return ViewHolder(view)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(ModelMarketBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        val item = items[position]
+        getItem(position)?.let { holder.bind(it) }
 
-        holder.binding.marketFishName.text = item.name
-        holder.binding.marketContent.text = item.summary
+//        val item = items[position]
+//
+//        holder.binding.marketFishName.text = item.name
+//        holder.binding.marketContent.text = item.summary
+//
+//        holder.binding.priceUpBadge.text = Utility.convertToOneDecimalPoints(item.highestPrice)
+//        holder.binding.priceDownBadge.text = Utility.convertToOneDecimalPoints(item.lowestPrice)
 
-        holder.binding.priceUpBadge.text = Utility.convertToOneDecimalPoints(item.highestPrice)
-        holder.binding.priceDownBadge.text = Utility.convertToOneDecimalPoints(item.lowestPrice)
-
-        if (!item.thumb.isNullOrEmpty()) {
-
-            Picasso.get().load(item.thumb).into(holder.binding.marketThumb)
-        }
+//        if (!item.thumb.isNullOrEmpty()) {
+//
+//            Picasso.get().load(item.thumb).into(holder.binding.marketThumb)
+//        }
     }
 
-    override fun getItemCount(): Int {
-
-        return items.size
-    }
-
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view), View.OnClickListener {
-
-        var binding: ModelMarketBinding = ModelMarketBinding.bind(view)
+    inner class ViewHolder(val binding: ModelMarketBinding): RecyclerView.ViewHolder(binding.root) {
 
         init {
 
-            binding.root.setOnClickListener(this)
+//            binding.listener = listener
         }
 
-        override fun onClick(v: View?) {
+        fun bind(market: Market) {
 
-            listener?.onMarketItemClicked(items[adapterPosition])
+            binding.market = market
+            binding.executePendingBindings()
         }
     }
 
-    interface MarketItemClickListener {
+    fun interface MarketItemClickListener {
 
         fun onMarketItemClicked(market: Market)
     }

@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="color_primary">#008577</color>
+    <color name="color_primary_dark">#0059a8</color>
+    <color name="color_accent">#D81B60</color>
 
     <color name="font_color">#414143</color>
+    <color name="font_color_light">#7E7878</color>
 
+    <color name="white">#FFFFFF</color>
     <color name="blue">#0059a8</color>
     <color name="light_cyan">#F5FCFF</color>
     <color name="prussian_blue">#023047</color>

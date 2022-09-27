@@ -1,4 +1,4 @@
-package com.techmave.fisherville.dialog
+package com.techmave.fisherville.view.dialog
 
 import android.content.Context
 import android.graphics.Color

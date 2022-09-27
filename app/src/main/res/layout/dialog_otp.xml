@@ -1,68 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingTop="@dimen/_8sdp"
-    android:paddingBottom="@dimen/_2sdp"
-    android:paddingStart="@dimen/_8sdp"
-    android:paddingEnd="@dimen/_8sdp"
-    android:background="@drawable/dialog_bg">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/otp_title"
-        android:layout_width="wrap_content"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.techmave.fisherville.viewmodel.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/enter_otp"
-        android:textSize="@dimen/_11ssp"
-        android:textColor="@color/font_color"
-        android:fontFamily="@font/open_sans_r"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingBottom="@dimen/_2sdp"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_8sdp"
+        android:background="@drawable/bg_dialog">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/otp_text"
-        android:layout_width="0dp"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:paddingStart="@dimen/_6sdp"
-        android:paddingEnd="@dimen/_6sdp"
-        android:gravity="center_vertical"
-        android:hint="@string/code"
-        android:textSize="@dimen/_10ssp"
-        android:inputType="numberSigned"
-        android:background="@drawable/card_outline_bg"
-        app:layout_constraintTop_toBottomOf="@id/otp_title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/otp_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/enter_otp"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/open_sans"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/otp_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="@string/submit"
-        android:textSize="@dimen/_10ssp"
-        android:textColor="@color/star_command_blue"
-        android:textAllCaps="false"
-        android:fontFamily="@font/open_sans_r"
-        android:background="@drawable/ripple_button_bg_transparent"
-        app:layout_constraintEnd_toEndOf="@id/otp_text"
-        app:layout_constraintTop_toBottomOf="@id/otp_text"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/otp_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:hint="@string/code"
+            setErrorText="@{viewModel.otpError}"
+            app:layout_constraintTop_toBottomOf="@id/otp_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/otp_resend"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_5sdp"
-        android:text="@string/resend"
-        android:textSize="@dimen/_10ssp"
-        android:textAllCaps="false"
-        android:enabled="false"
-        android:background="@drawable/ripple_button_bg_transparent"
-        app:layout_constraintTop_toTopOf="@id/otp_submit"
-        app:layout_constraintBottom_toBottomOf="@id/otp_submit"
-        app:layout_constraintEnd_toStartOf="@id/otp_submit"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@={viewModel.tempOtp}"
+                android:textSize="@dimen/_10ssp"
+                android:inputType="numberSigned" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/otp_text"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:paddingStart="@dimen/_6sdp"
+            android:paddingEnd="@dimen/_6sdp"
+            android:gravity="center_vertical"
+            android:hint="@string/code"
+            android:textSize="@dimen/_10ssp"
+            android:inputType="numberSigned"
+            android:background="@drawable/card_outline_bg"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/otp_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/otp_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_continue"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/adorsho_lipi"
+            android:textAllCaps="false"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:onClick="@{(v) -> viewModel.validateOtp(v, viewModel.tempOtp)}"
+            app:layout_constraintTop_toTopOf="@id/otp_cancel"
+            app:layout_constraintBottom_toBottomOf="@id/otp_cancel"
+            app:layout_constraintEnd_toStartOf="@id/otp_cancel"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/otp_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_cancel"
+            android:textSize="@dimen/_10ssp"
+            android:fontFamily="@font/adorsho_lipi"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:layout_constraintEnd_toEndOf="@id/otp_layout"
+            app:layout_constraintTop_toBottomOf="@id/otp_layout" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

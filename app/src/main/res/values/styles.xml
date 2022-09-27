@@ -1,9 +1,9 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
     </style>
 
     <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
@@ -16,14 +16,14 @@
     </style>
 
     <style name="ToolbarTheme" parent="@android:style/TextAppearance.Medium">
-        <item name="android:textSize">@dimen/_13sdp</item>
+        <item name="android:textSize">@dimen/_13ssp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">@font/open_sans_r</item>
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
-    <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/pop_up</item>
-        <item name="android:windowExitAnimation">@anim/pop_off</item>
-    </style>
+<!--    <style name="DialogAnimation">-->
+<!--        <item name="android:windowEnterAnimation">@anim/pop_up</item>-->
+<!--        <item name="android:windowExitAnimation">@anim/pop_off</item>-->
+<!--    </style>-->
 
 </resources>

@@ -4,8 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import com.google.firebase.database.*
 
-
-class FirebaseRepository : LiveData<DataSnapshot?> {
+class FirebaseRepository: LiveData<DataSnapshot?> {
 
     private val query: Query
     private val listener: FirebaseEventListener = FirebaseEventListener()

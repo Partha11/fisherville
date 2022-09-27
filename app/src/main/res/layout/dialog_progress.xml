@@ -1,27 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.victor.loading.rotate.RotateLoading
-        android:id="@+id/indeterminate_loading"
-        android:layout_width="@dimen/_40sdp"
-        android:layout_height="@dimen/_40sdp"
-        app:loading_width="5dp"
-        app:loading_color="@color/light_cyan"
-        android:layout_margin="@dimen/_10sdp"/>
+    <data>
+        <variable
+            name="dialog"
+            type="com.techmave.fisherville.view.dialog.CustomProgress" />
+    </data>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/indeterminate_loading_text"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/indeterminate_loading"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/_8sdp"
-        tools:text="Loading..."
-        android:textSize="@dimen/_10sdp"/>
+        android:paddingTop="@dimen/_8sdp"
+        android:paddingStart="@dimen/_8sdp"
+        android:paddingEnd="@dimen/_4sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:background="@drawable/bg_dialog">
 
-</RelativeLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/dialog_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Please Wait"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/adorsho_lipi"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:text="@{dialog.title}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.agrawalsuneet.dotsloader.loaders.AllianceLoader
+            android:id="@+id/indeterminate_loading"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            app:alliance_animDuration="500"
+            app:alliance_distanceMultiplier="4"
+            app:alliance_dotsRadius="@dimen/_4sdp"
+            app:alliance_drawOnlyStroke="false"
+            app:alliance_firstDotsColor="@color/star_command_blue"
+            app:alliance_secondDotsColor="@color/star_command_blue"
+            app:alliance_thirdDotsColor="@color/star_command_blue"
+            app:layout_constraintTop_toBottomOf="@id/dialog_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/dialog_title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/dialog_content"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            tools:text="Loading..."
+            android:text="@{dialog.content}"
+            android:textSize="@dimen/_10ssp"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/adorsho_lipi"
+            app:layout_constraintTop_toTopOf="@id/indeterminate_loading"
+            app:layout_constraintBottom_toBottomOf="@id/indeterminate_loading"
+            app:layout_constraintStart_toEndOf="@id/indeterminate_loading"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

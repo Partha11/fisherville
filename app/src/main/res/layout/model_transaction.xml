@@ -1,104 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginStart="@dimen/_6sdp"
-    android:layout_marginEnd="@dimen/_6sdp"
-    android:layout_marginTop="@dimen/_4sdp"
-    android:layout_marginBottom="@dimen/_4sdp"
-    app:cardCornerRadius="@dimen/_4sdp"
-    android:foreground="?selectableItemBackground"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="transaction"
+            type="com.techmave.fisherville.model.Transaction" />
+        <import type="com.techmave.fisherville.util.Utility" />
+        <import type="android.view.View"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_8sdp">
+        android:layout_marginStart="@dimen/_6sdp"
+        android:layout_marginEnd="@dimen/_6sdp"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_4sdp"
+        app:cardCornerRadius="@dimen/_4sdp"
+        android:foreground="?selectableItemBackground">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/transaction_thumb"
-            android:layout_width="@dimen/_48sdp"
-            android:layout_height="@dimen/_48sdp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:src="@drawable/ic_smartphone"
-            android:src="@drawable/ic_placeholder"/>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/transaction_fish_name"
-            android:layout_width="0dp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Hilsha"
-            android:textSize="@dimen/_11ssp"
-            android:textColor="@color/font_color"
-            android:fontFamily="@font/open_sans_r"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:layout_marginStart="@dimen/_6sdp"
-            android:layout_marginEnd="@dimen/_6sdp"
-            android:maxLines="1"
-            android:ellipsize="end"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toEndOf="@id/transaction_thumb"
-            app:layout_constraintEnd_toStartOf="@id/transaction_type_badge_sell"/>
+            android:padding="@dimen/_8sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/transaction_content"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            tools:text="2 KG | 400 BDT"
-            android:textSize="@dimen/_10ssp"
-            android:textColor="#7E7878"
-            android:fontFamily="@font/open_sans_r"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:layout_marginTop="@dimen/_4sdp"
-            app:layout_constraintTop_toBottomOf="@id/transaction_fish_name"
-            app:layout_constraintStart_toStartOf="@id/transaction_fish_name"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/transaction_thumb"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:src="@drawable/ic_smartphone"
+                android:src="@drawable/ic_placeholder" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/transaction_type_badge_buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/buy"
-            android:textSize="@dimen/_9ssp"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/open_sans_r"
-            android:background="@drawable/dialog_bg"
-            android:backgroundTint="@color/salmon"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/_6sdp"
-            android:paddingEnd="@dimen/_6sdp"
-            android:paddingTop="@dimen/_3sdp"
-            android:paddingBottom="@dimen/_3sdp"
-            app:layout_constraintTop_toTopOf="@id/transaction_fish_name"
-            app:layout_constraintBottom_toBottomOf="@id/transaction_fish_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/transaction_fish_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="Hilsha"
+                android:text="@{transaction.fishName}"
+                android:textSize="@dimen/_11ssp"
+                android:textColor="@color/font_color"
+                android:fontFamily="@font/adorsho_lipi"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_marginEnd="@dimen/_6sdp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/transaction_thumb"
+                app:layout_constraintEnd_toStartOf="@id/transaction_type_badge_sell" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/transaction_type_badge_sell"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sell"
-            android:textSize="@dimen/_9ssp"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/open_sans_r"
-            android:background="@drawable/dialog_bg"
-            android:backgroundTint="@color/star_command_blue"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/_6sdp"
-            android:paddingEnd="@dimen/_6sdp"
-            android:paddingTop="@dimen/_3sdp"
-            android:paddingBottom="@dimen/_3sdp"
-            app:layout_constraintTop_toTopOf="@id/transaction_fish_name"
-            app:layout_constraintBottom_toBottomOf="@id/transaction_fish_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="gone"/>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/transaction_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                tools:text="2 KG | 400 BDT"
+                android:text="@{@string/transaction_text(Utility.convertToOneDecimalPoints(transaction.fishAmount), Utility.convertToOneDecimalPoints(transaction.transactionAmount))}"
+                android:textSize="@dimen/_10ssp"
+                android:textColor="#7E7878"
+                android:fontFamily="@font/open_sans"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginTop="@dimen/_4sdp"
+                app:layout_constraintTop_toBottomOf="@id/transaction_fish_name"
+                app:layout_constraintStart_toStartOf="@id/transaction_fish_name"
+                app:layout_constraintEnd_toEndOf="parent" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/transaction_type_badge_buy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/buy"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/adorsho_lipi"
+                android:background="@drawable/bg_dialog"
+                android:backgroundTint="@color/color_accent"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:visibility="@{transaction.transactionType == 0L ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toTopOf="@id/transaction_fish_name"
+                app:layout_constraintBottom_toBottomOf="@id/transaction_fish_name"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/transaction_type_badge_sell"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sell"
+                android:textSize="@dimen/_9ssp"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/adorsho_lipi"
+                android:background="@drawable/bg_dialog"
+                android:backgroundTint="@color/color_primary"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/_6sdp"
+                android:paddingEnd="@dimen/_6sdp"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:visibility="@{transaction.transactionType != 0L ? View.VISIBLE : View.GONE}"
+                app:layout_constraintTop_toTopOf="@id/transaction_fish_name"
+                app:layout_constraintBottom_toBottomOf="@id/transaction_fish_name"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-</androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

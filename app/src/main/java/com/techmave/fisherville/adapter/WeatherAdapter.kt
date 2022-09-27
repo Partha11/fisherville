@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.techmave.fisherville.R
 import com.techmave.fisherville.databinding.ModelWeatherBinding
 import com.techmave.fisherville.model.Daily
@@ -36,7 +35,7 @@ class WeatherAdapter(private val context: Context): RecyclerView.Adapter<Weather
             holder.binding.windSpeed.text = context.getString(R.string.wind_speed, Utility.convertToOneDecimalPoints(item.windSpeed))
             holder.binding.weatherSummary.text = Utility.convertStringToUpperCase(item.weather[0].description)
 
-            Picasso.get().load(context.getString(R.string.icon_api, item.weather[0].icon)).into(holder.binding.weatherThumb)
+//            Picasso.get().load(context.getString(R.string.icon_api, item.weather[0].icon)).into(holder.binding.weatherThumb)
         }
 
 //        holder.binding.transactionFishName.text = item.fishName

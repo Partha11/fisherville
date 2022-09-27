@@ -1,21 +1,8 @@
 package com.techmave.fisherville.repository
 
-class LoginRepository {
+import javax.inject.Inject
+import javax.inject.Singleton
 
-    companion object {
-
-        @Volatile
-        private var instance: LoginRepository? = null
-
-        @JvmStatic
-        fun getInstance(): LoginRepository {
-
-            if (instance == null) {
-
-                instance = LoginRepository()
-            }
-
-            return instance!!
-        }
-    }
+@Singleton
+class LoginRepository @Inject constructor() {
 }
